@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import tweetRoutes from './routes/tweet.routes';
 import { loginWithCookies } from './services/auth';
-import { startMonitoringExistingTweets, startQuoteMonitor } from './services/monitor';
+import { startQuoteMonitor } from './services/monitor';
 
 dotenv.config();
 
@@ -14,6 +14,5 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, async () => {
   console.log(`Server running on port ${PORT}`);
   await loginWithCookies();
-  await startMonitoringExistingTweets();
   startQuoteMonitor();
 });
